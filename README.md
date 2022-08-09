@@ -36,6 +36,12 @@ If we need someone to reproduce our setup, the person can just generate the imag
 
 If you want to use bbb-configs for locations that are not included in bbb-configs yet or to work on a fork of the code yourself then see the [Developers Guide](DEVELOPER.md).
 
+## Automaticly updating to wiki.freifunk.net
+
+If you updated certain locations you can automaticly updating their wikiarticle using the wikitag:
+    ansible-playbook play.yml --tags wiki
+This works by automaticly replacing semantic values in the coresponding article resulting in the placeholders throughout the article being replaced with the new values. For an example you can have a look at the [wikiarticle of Fesev](https://wiki.freifunk.net/Berlin:Standorte:Fesev). To add this option to your wikiarticle add a section called "Konfiguration" and replace all values that you want to automaticly change as you can see in the example-article.
+
 ## Support Information
 
 * [Support Chat](https://matrix.to/#/#berlin.freifunk.net:matrix.org): Channel `#berlin.freifunk.net` on **matrix.org**.
