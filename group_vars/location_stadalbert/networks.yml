@@ -28,9 +28,10 @@ networks:
     assignments:
       stadalbert-core: 1
       stadalbert-switch-ground: 2
-      stadalbert-switch-roof: 3
+      #stadalbert-switch-roof: 3 -> no longer needed
       stadalbert-segen: 4
       stadalbert-linie: 5
+      stadalbert-nf-cafej: 6
 
   - vid: 40
     role: dhcp
@@ -47,14 +48,14 @@ networks:
     role: ext
     tunnel_wan_ip: 192.168.8.2/24
     tunnel_wan_gw: 192.168.8.1
-    tunnel_connections: 2
+    tunnel_connections: 1
     tunnel_timeout: 600
     tunnel_mesh_prefix_ipv4: 10.31.53.24/29
 
 location__channel_assignments_11a_standard__to_merge:
-  stadalbert-core: 40-40
+  stadalbert-nf-cafej: 40-40
 
 location__channel_assignments_11g_standard__to_merge:
-  stadalbert-core: 1-20
+  stadalbert-nf-cafej: 1-20
 
 # channel-bandwith-txpower in dbm
