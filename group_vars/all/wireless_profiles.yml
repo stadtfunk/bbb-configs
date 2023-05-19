@@ -343,14 +343,14 @@ wireless_profiles:
         ieee80211w: 1
       - mode: ap
         ssid: khof-test
-        encryption: sae-mixed
+        encryption: psk2
         key: 'file:/root/wifi_pass'
         network: prdhcp
         radio: [11a_standard, 11g_standard]
         ifname_hint: prdhcp
       - mode: mesh
         mesh_id: Mesh-Freifunk-Berlin
-        radio: [11a_standard, 11g_standard, 11a_mesh]
+        radio: [11a_standard, 11a_mesh]
         mcast_rate: 12000
         mesh_fwding: 0
         ifname_hint: mesh
