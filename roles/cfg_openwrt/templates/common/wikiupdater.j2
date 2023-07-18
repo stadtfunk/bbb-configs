@@ -20,6 +20,8 @@
     {% do wi.ki.update( {i: lookup('vars', i|string, default='')}) %}
 {% endfor %}
 
+{% set contacts_output = [] %}
+
 {# Processing vars from general.yml #}
 {# Big chunks from this part are copied from config/freifunk.j2 #}
 
@@ -34,7 +36,15 @@
     {% do wi.ki.update({'Ansprechpartner Nickname': contact_nickname})%}
 {% endif %}
 {% if contacts is defined%}
-    {% do wi.ki.update({'Ansprechpartner Kontakt': contacts})%}
+    {# Check if Contact is a Matrixroom because the wiki interprets #foo:matrix.org as a URI fragment #}
+    {% for contact in contacts %}
+        {% if (contact | regex_search('^#.*\:.*\..*')) %}
+            {% do contacts_output.append('https://matrix.to/'+contact) %}
+        {% else %}
+            {% do contacts_output.append(contact) %}
+        {% endif %}
+    {% endfor %}
+    {% do wi.ki.update({'Ansprechpartner Kontakt': contacts_output})%}
 {% else %}
     {% do wi.ki.update({'Ansprechpartner Kontakt': 'info'+location+'@berlin.freifunk.net'})%}
 {% endif %}
