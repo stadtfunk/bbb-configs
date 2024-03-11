@@ -9,7 +9,7 @@ hosts:
 
   - hostname: camp1-core
     role: corerouter
-    model: "avm_fritzbox-4040"
+    model: "mikrotik_wap-ac"
     wireless_profile: camp1
 
   - hostname: camp1-ap
