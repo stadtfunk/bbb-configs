@@ -20,8 +20,8 @@ hosts:
 # camp1:
 # --MGMT: 10.31.205.6/31    (old unused: 10.31.205.1/32)
 # --DHCP: 10.31.202.0/25
-# --MESH: 10.31.205.24/30
-# PRDHCP: 10.31.205.64/26   (old unused: 10.31.205.16/32)
+# --MESH: 10.31.205.24/30   (old unused: 10.31.205.16/32)
+# PRDHCP: 10.31.205.64/26
 
 ipv6_prefix: 2001:bf7:750:5800::/56
 
@@ -35,7 +35,6 @@ networks:
     mesh_ap: camp1-ap
     mesh_radio: 11g_standard
     mesh_iface: mesh
-    mesh_metric: 1024
 
   - vid: 40
     role: dhcp
@@ -119,7 +118,7 @@ location__wireless_profiles__to_merge:
         hidden: true
         encryption: owe
         network: dhcp
-        radio: [11a_standard, 11g_standard]
+        radio: [11a_standard]
         ifname_hint: owe
         owe_transition_ifname_hint: open
         ieee80211w: 1

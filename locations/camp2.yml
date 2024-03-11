@@ -81,13 +81,13 @@ location__wireless_profiles__to_merge:
         hidden: true
         encryption: owe
         network: dhcp
-        radio: [11a_standard, 11g_standard]
+        radio: [11a_standard]
         ifname_hint: owe
         owe_transition_ifname_hint: open
         ieee80211w: 1
       - mode: mesh
         mesh_id: Mesh-Freifunk-Berlin
-        radio: [11g_standard, 11a_mesh]
+        radio: [11g_standard]
         mcast_rate: 12000
         mesh_fwding: 0
         ifname_hint: mesh

@@ -77,7 +77,7 @@ location__wireless_profiles__to_merge:
         hidden: true
         encryption: owe
         network: dhcp
-        radio: [11a_standard, 11g_standard]
+        radio: [11a_standard]
         ifname_hint: owe
         owe_transition_ifname_hint: open
         ieee80211w: 1
