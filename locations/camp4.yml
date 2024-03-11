@@ -16,7 +16,7 @@ hosts:
 # --DHCP: 10.31.203.128/25
 # --MESH: 10.31.205.20/32
 
-ipv6_prefix: 2001:bf7:750:5800::/56
+ipv6_prefix: 2001:bf7:750:5d00::/56 
 
 networks:
 
@@ -24,7 +24,7 @@ networks:
     role: mesh
     name: mesh_camp
     prefix: 10.31.205.20/32
-    ipv6_subprefix: -8
+    ipv6_subprefix: -20
     mesh_ap: camp4
     mesh_radio: 11g_standard
     mesh_iface: mesh
@@ -34,7 +34,7 @@ networks:
     role: dhcp
     name: dhcp
     prefix: 10.31.203.128/25
-    ipv6_subprefix: -9
+    ipv6_subprefix: -40
     inbound_filtering: true
     enforce_client_isolation: true
     untagged: true
@@ -46,7 +46,7 @@ networks:
     prefix: 10.31.205.4/32
     gateway: 1
     dns: 1
-    ipv6_subprefix: 4
+    ipv6_subprefix: 0
     assignments:
       camp4: 1
 
