@@ -18,7 +18,7 @@ hosts:
     wireless_profile: camp1
 
 # camp1:
-# --MGMT: 10.31.205.6/31    (old unused: 10.31.205.1/32)
+# --MGMT: 10.31.205.8/30    (old unused: 10.31.205.1/32)
 # --DHCP: 10.31.202.0/25
 # --MESH: 10.31.205.24/30   (old unused: 10.31.205.16/32)
 # PRDHCP: 10.31.205.64/26
@@ -59,7 +59,7 @@ networks:
 
   - vid: 42
     role: mgmt
-    prefix: 10.31.205.6/31
+    prefix: 10.31.205.8/30
     gateway: 1
     dns: 1
     ipv6_subprefix: 0
