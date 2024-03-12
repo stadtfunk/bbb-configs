@@ -14,7 +14,7 @@ hosts:
 
   - hostname: camp1-ap
     role: ap
-    model: "glinet_gl-mt1300"
+    model: "mikrotik_wap-ac"
     wireless_profile: camp1
 
 # camp1:
@@ -93,8 +93,8 @@ location__channel_assignments_11a_standard__to_merge:
   # canp5: 36-20
 
 location__channel_assignments_11g_standard__to_merge:
-  camp1-core: 1-20
-  camp1-ap: 13-20
+  camp1-core: 13-20
+  camp1-ap: 1-80
 
 location__wireless_profiles__to_merge:
   - name: camp1

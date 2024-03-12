@@ -8,7 +8,7 @@ community: true
 hosts:
   - hostname: camp3
     role: corerouter
-    model: "glinet_gl-mt1300"
+    model: "mikrotik_wap-ac"
     wireless_profile: camp3
 
 # camp3
@@ -54,7 +54,7 @@ location__channel_assignments_11a_standard__to_merge:
   camp2: 44-20
 
 location__channel_assignments_11g_standard__to_merge:
-  camp2: 13-20
+  camp2: 1-80
 
 location__wireless_profiles__to_merge:
   - name: camp3
