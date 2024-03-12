@@ -51,10 +51,10 @@ networks:
       camp3: 1
 
 location__channel_assignments_11a_standard__to_merge:
-  camp2: 44-20
+  camp3: 44-20
 
 location__channel_assignments_11g_standard__to_merge:
-  camp2: 1-80
+  camp3: 1-40
 
 location__wireless_profiles__to_merge:
   - name: camp3

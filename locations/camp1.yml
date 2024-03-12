@@ -94,7 +94,7 @@ location__channel_assignments_11a_standard__to_merge:
 
 location__channel_assignments_11g_standard__to_merge:
   camp1-core: 13-20
-  camp1-ap: 1-80
+  camp1-ap: 1-40
 
 location__wireless_profiles__to_merge:
   - name: camp1

@@ -16,7 +16,7 @@ hosts:
 # --DHCP: 10.31.204.0/25
 # --MESH: 10.31.205.21/32
 
-ipv6_prefix: 2001:bf7:750:5e00::/56 
+ipv6_prefix: 2001:bf7:750:5e00::/56
 
 networks:
   - vid: 20
@@ -50,10 +50,10 @@ networks:
       camp5: 1
 
 location__channel_assignments_11a_standard__to_merge:
-  camp2: 36-20
+  camp5: 36-20
 
 location__channel_assignments_11g_standard__to_merge:
-  camp2: 1-80
+  camp5: 1-40
 
 location__wireless_profiles__to_merge:
   - name: camp5
