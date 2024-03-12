@@ -26,7 +26,7 @@ networks:
     prefix: 10.31.205.20/32
     ipv6_subprefix: -20
     mesh_ap: camp4
-    mesh_radio: 11g_standard
+    mesh_radio: 11a_standard
     mesh_iface: mesh
     mesh_metric: 1024
 
@@ -51,10 +51,10 @@ networks:
       camp4: 1
 
 location__channel_assignments_11a_standard__to_merge:
-  camp4: 48-20
+  camp4: 36-40
 
 location__channel_assignments_11g_standard__to_merge:
-  camp4: 1-40
+  camp4: 1-20
 
 location__wireless_profiles__to_merge:
   - name: camp4
@@ -70,7 +70,7 @@ location__wireless_profiles__to_merge:
         ssid: campfunk.freifunk.net#4
         encryption: none
         network: dhcp
-        radio: [11a_standard]
+        radio: [11g_standard]
         ifname_hint: open
         owe_transition_ifname_hint: owe
       - mode: ap
@@ -78,13 +78,13 @@ location__wireless_profiles__to_merge:
         hidden: true
         encryption: owe
         network: dhcp
-        radio: [11a_standard]
+        radio: [11g_standard]
         ifname_hint: owe
         owe_transition_ifname_hint: open
         ieee80211w: 1
       - mode: mesh
         mesh_id: Mesh-Freifunk-Berlin
-        radio: [11g_standard]
+        radio: [11a_standard]
         mcast_rate: 12000
         mesh_fwding: 0
         ifname_hint: mesh
