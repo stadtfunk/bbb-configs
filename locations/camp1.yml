@@ -27,14 +27,14 @@ ipv6_prefix: 2001:bf7:750:5800::/56
 
 networks:
 
-  - vid: 20
-    role: mesh
-    name: mesh_camp
-    prefix: 10.31.205.24/32
-    ipv6_subprefix: -20
-    mesh_ap: camp1-ap
-    mesh_radio: 11a_standard
-    mesh_iface: mesh
+  # - vid: 20
+  #   role: mesh
+  #   name: mesh_camp
+  #   prefix: 10.31.205.24/32
+  #   ipv6_subprefix: -20
+  #   mesh_ap: camp1-ap
+  #   mesh_radio: 11a_standard
+  #   mesh_iface: mesh
 
   - vid: 40
     role: dhcp
@@ -46,16 +46,16 @@ networks:
     assignments:
       camp1-core: 1
 
-  - vid: 41
-    role: dhcp
-    name: prdhcp
-    prefix: 10.31.205.64/26
-    ipv6_subprefix: -41
-    inbound_filtering: true
-    enforce_client_isolation: false
-    no_corerouter_dns_record: true
-    assignments:
-      camp1-core: 1
+  # - vid: 41
+  #   role: dhcp
+  #   name: prdhcp
+  #   prefix: 10.31.205.64/26
+  #   ipv6_subprefix: -41
+  #   inbound_filtering: true
+  #   enforce_client_isolation: false
+  #   no_corerouter_dns_record: true
+  #   assignments:
+  #     camp1-core: 1
 
   - vid: 42
     role: mgmt
@@ -105,33 +105,33 @@ location__wireless_profiles__to_merge:
       - radio: 11g_standard
         legacy_rates: false
         country: DE
+      - radio: 11a_mesh
+        legacy_rates: false
+        country: DE
     ifaces:
       - mode: ap
         ssid: campfunk.freifunk.net#1
         encryption: none
         network: dhcp
-        radio: [11g_standard]
-        ifname_hint: open
-        owe_transition_ifname_hint: owe
+        radio: [11a_standard, 11g_standard]
+        ifname_hint: ff
       - mode: ap
-        ssid: campfunk.freifunk.net#1 OWE
-        hidden: true
+        ssid: campfunk.freifunk.net#1 Encrypted
         encryption: owe
         network: dhcp
-        radio: [11g_standard]
-        ifname_hint: owe
-        owe_transition_ifname_hint: open
+        radio: [11a_standard, 11g_standard]
+        ifname_hint: ffowe
         ieee80211w: 1
-      - mode: ap
-        ssid: camp-intern
-        encryption: psk2
-        key: 'file:/root/wifi_pass'
-        network: prdhcp
-        radio: [11g_standard]
-        ifname_hint: prdhcp
-      - mode: mesh
-        mesh_id: Mesh-Freifunk-Berlin
-        radio: [11a_standard]
-        mcast_rate: 12000
-        mesh_fwding: 0
-        ifname_hint: mesh
+      # - mode: ap
+      #   ssid: camp-intern
+      #   encryption: psk2
+      #   key: 'file:/root/wifi_pass'
+      #   network: prdhcp
+      #   radio: [11g_standard]
+      #   ifname_hint: prdhcp
+      # - mode: mesh
+      #   mesh_id: Mesh-Freifunk-Berlin
+      #   radio: [11a_standard, 11g_standard, 11a_mesh]
+      #   mcast_rate: 12000
+      #   mesh_fwding: 0
+      #   ifname_hint: mesh
