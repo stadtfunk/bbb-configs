@@ -8,8 +8,8 @@ community: true
 hosts:
   - hostname: camp4
     role: corerouter
-    model: "mikrotik_wap-ac"
-    wireless_profile: camp4
+    model: "glinet_gl-mt1300"
+    wireless_profile: freifunk_default
 
 # camp4
 # --MGMT: 10.31.205.4/32
