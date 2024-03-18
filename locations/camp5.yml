@@ -1,0 +1,89 @@
+---
+location: camp5
+location_nice: campfunk.freifunk.net#5
+latitude: 12.00100
+longitude: 13.00200
+community: true
+
+hosts:
+  - hostname: camp5
+    role: corerouter
+    model: "mikrotik_wap-ac"
+    wireless_profile: camp5
+
+# camp5
+# --MGMT: 10.31.205.5/32
+# --DHCP: 10.31.204.0/25
+# --MESH: 10.31.205.21/32
+
+ipv6_prefix: 2001:bf7:750:5e00::/56
+
+networks:
+  - vid: 20
+    role: mesh
+    name: mesh_camp
+    prefix: 10.31.205.21/32
+    ipv6_subprefix: -20
+    mesh_ap: camp5
+    mesh_radio: 11a_standard
+    mesh_iface: mesh
+    mesh_metric: 1024
+
+  - vid: 40
+    role: dhcp
+    name: dhcp
+    prefix: 10.31.204.0/25
+    ipv6_subprefix: -40
+    inbound_filtering: true
+    enforce_client_isolation: true
+    untagged: true
+    assignments:
+      camp5: 1
+
+  - vid: 42
+    role: mgmt
+    prefix: 10.31.205.5/32
+    gateway: 1
+    dns: 1
+    ipv6_subprefix: 0
+    assignments:
+      camp5: 1
+
+location__channel_assignments_11a_standard__to_merge:
+  camp5: 36-40
+
+location__channel_assignments_11g_standard__to_merge:
+  camp5: 6-20
+
+location__wireless_profiles__to_merge:
+  - name: camp5
+    devices:
+      - radio: 11a_standard
+        legacy_rates: false
+        country: DE
+      - radio: 11g_standard
+        legacy_rates: false
+        country: DE
+    ifaces:
+      - mode: ap
+        ssid: campfunk.freifunk.net#5
+        encryption: none
+        network: dhcp
+        radio: [11g_standard]
+        ifname_hint: open
+        owe_transition_ifname_hint: owe
+      - mode: ap
+        ssid: campfunk.freifunk.net#5 OWE
+        hidden: true
+        encryption: owe
+        network: dhcp
+        radio: [11g_standard]
+        ifname_hint: owe
+        owe_transition_ifname_hint: open
+        ieee80211w: 1
+      - mode: mesh
+        mesh_id: Mesh-Freifunk-Berlin
+        radio: [11a_standard]
+        mcast_rate: 12000
+        mesh_fwding: 0
+        ifname_hint: mesh

@@ -1,0 +1,137 @@
+---
+location: camp1
+location_nice: campfunk.freifunk.net#1
+latitude: 12.00300
+longitude: 13.00200
+community: true
+
+hosts:
+
+  - hostname: camp1-core
+    role: corerouter
+    model: "mikrotik_wap-ac"
+    wireless_profile: camp1
+
+  - hostname: camp1-ap
+    role: ap
+    model: "mikrotik_wap-ac"
+    wireless_profile: camp1
+
+# camp1:
+# --MGMT: 10.31.205.8/30    (old unused: 10.31.205.1/32)
+# --DHCP: 10.31.202.0/25
+# --MESH: 10.31.205.24/30   (old unused: 10.31.205.16/32)
+# PRDHCP: 10.31.205.64/26
+
+ipv6_prefix: 2001:bf7:750:5800::/56
+
+networks:
+
+  # - vid: 20
+  #   role: mesh
+  #   name: mesh_camp
+  #   prefix: 10.31.205.24/32
+  #   ipv6_subprefix: -20
+  #   mesh_ap: camp1-ap
+  #   mesh_radio: 11a_standard
+  #   mesh_iface: mesh
+
+  - vid: 40
+    role: dhcp
+    name: dhcp
+    prefix: 10.31.202.0/25
+    ipv6_subprefix: -40
+    inbound_filtering: true
+    enforce_client_isolation: true
+    assignments:
+      camp1-core: 1
+
+  # - vid: 41
+  #   role: dhcp
+  #   name: prdhcp
+  #   prefix: 10.31.205.64/26
+  #   ipv6_subprefix: -41
+  #   inbound_filtering: true
+  #   enforce_client_isolation: false
+  #   no_corerouter_dns_record: true
+  #   assignments:
+  #     camp1-core: 1
+
+  - vid: 42
+    role: mgmt
+    prefix: 10.31.205.8/30
+    gateway: 1
+    dns: 1
+    ipv6_subprefix: 0
+    assignments:
+      camp1-core: 1
+      camp1-ap: 2
+
+  - vid: 50
+    role: uplink
+    untagged: true
+
+  - role: tunnel
+    ifname: ts_wg0
+    mtu: 1280
+    prefix: 10.31.205.25/32
+    wireguard_port: 51820
+
+  - role: tunnel
+    ifname: ts_wg1
+    mtu: 1280
+    prefix: 10.31.205.26/32
+    wireguard_port: 51821
+
+
+location__channel_assignments_11a_standard__to_merge:
+  camp1-core: 44-40
+  camp1-ap: 36-40
+  # camp2: 40-20
+  # camp3: 44-20
+  # camp4: 48-20
+  # canp5: 36-20
+
+location__channel_assignments_11g_standard__to_merge:
+  camp1-core: 13-20
+  camp1-ap: 1-20
+
+location__wireless_profiles__to_merge:
+  - name: camp1
+    devices:
+      - radio: 11a_standard
+        legacy_rates: false
+        country: DE
+      - radio: 11g_standard
+        legacy_rates: false
+        country: DE
+      - radio: 11a_mesh
+        legacy_rates: false
+        country: DE
+    ifaces:
+      - mode: ap
+        ssid: campfunk.freifunk.net#1
+        encryption: none
+        network: dhcp
+        radio: [11a_standard, 11g_standard]
+        ifname_hint: ff
+      - mode: ap
+        ssid: campfunk.freifunk.net#1 Encrypted
+        encryption: owe
+        network: dhcp
+        radio: [11a_standard, 11g_standard]
+        ifname_hint: ffowe
+        ieee80211w: 1
+      # - mode: ap
+      #   ssid: camp-intern
+      #   encryption: psk2
+      #   key: 'file:/root/wifi_pass'
+      #   network: prdhcp
+      #   radio: [11g_standard]
+      #   ifname_hint: prdhcp
+      # - mode: mesh
+      #   mesh_id: Mesh-Freifunk-Berlin
+      #   radio: [11a_standard, 11g_standard, 11a_mesh]
+      #   mcast_rate: 12000
+      #   mesh_fwding: 0
+      #   ifname_hint: mesh
