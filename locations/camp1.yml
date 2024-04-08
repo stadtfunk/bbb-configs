@@ -10,12 +10,12 @@ hosts:
   - hostname: camp1-core
     role: corerouter
     model: "mikrotik_wap-ac"
-    wireless_profile: camp1
+    wireless_profile: freifunk_default
 
   - hostname: camp1-ap
     role: ap
     model: "mikrotik_wap-ac"
-    wireless_profile: camp1
+    wireless_profile: freifunk_default
 
 # camp1:
 # --MGMT: 10.31.205.8/30    (old unused: 10.31.205.1/32)
